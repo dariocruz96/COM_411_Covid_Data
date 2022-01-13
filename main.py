@@ -11,7 +11,10 @@ Note:   any user input/output should be done using the appropriate functions in 
 
 # Task 10: Import required modules
 # TODO: Your code here
-
+import tui
+import csv
+import visual
+import process
 # Task 11: Create an empty list named 'covid_records'.
 # This will be used to store the data read from the source data file.
 # TODO: Your code here
