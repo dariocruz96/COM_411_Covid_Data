@@ -184,7 +184,17 @@ def observation_dates():
     :return: a list of observation dates
     """
     # TODO: Your code here
-    pass
+    observation_dates_list = []
+    print("Please enter some observation dates(in format mm/dd/yyyy, X - finish)")
+    while True:
+        date = input()
+        if date.lower() == "x":
+            break
+        elif len(date) == 10:
+            observation_dates_list.append(date)
+        else:
+            print("Please enter a valid date")
+    return observation_dates_list
 
 
 def display_record(record, cols=None):
