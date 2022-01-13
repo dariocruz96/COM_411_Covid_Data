@@ -97,7 +97,32 @@ def run():
         #       - Use the appropriate function in the module 'tui' to indicate that the summary
         #       process has completed.
         # TODO: Your code here
-
+        if variant == 1:
+            tui.progress("Data processing", 0)
+            tui.progress("Data processing", 100)
+            variant = tui.menu(variant)
+            if variant == 1:
+                tui.progress("Record retrieval", 0)
+                process.loaded_record(covid_records)
+                tui.progress("Record retrieval", 100)
+                variant = 1
+            elif variant == 2:
+                tui.progress("Records retrieval", 0)
+                process.records_by_observation_date(covid_records)
+                tui.progress("Records retrieval", 100)
+                variant = 1
+            elif variant == 3:
+                tui.progress("Grouping process", 0)
+                group_by_country_region = process.group_by_country_region(covid_records)
+                tui.display_records(group_by_country_region)
+                tui.progress("Grouping process", 100)
+                variant = 1
+            elif variant == 4:
+                tui.progress("Summary process", 0)
+                summary = process.summary_of_records(covid_records)
+                tui.display_records(summary)
+                tui.progress("Summary process", 100)
+                variant = 1
         # Task 21: Check if the user selected the option for visualising data.
         # If so, then do the following:
         # - Use the appropriate function in the module 'tui' to indicate that the data visualisation operation
