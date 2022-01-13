@@ -19,7 +19,14 @@ def welcome():
     :return: Does not return anything.
     """
     # TODO: Your code here
-    pass
+    message = "COVID-19 (January) Data"
+    for i in range(len(message)):
+        print("-", end="")
+    print(f'\n{message}')
+    for i in range(len(message)):
+        print("-", end="")
+    print()
+    return 0
 
 
 def error(msg):
