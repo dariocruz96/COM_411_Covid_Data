@@ -223,7 +223,11 @@ def display_record(record, cols=None):
     :return: Does not return anything
     """
     # TODO: Your code here
-    pass
+    if cols is None:
+        print(record)
+    else:
+        for i in cols:
+            display_record(record[i])
 
 
 def display_records():
