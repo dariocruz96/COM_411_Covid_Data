@@ -51,3 +51,10 @@ def records_by_observation_date(covid_records):
                 count += 1
             else:
                 count += 1
+
+
+def group_by_country_region(covid_records):
+    group = covid_records
+    group.sort(key=lambda x: x[3])
+    return group
+
