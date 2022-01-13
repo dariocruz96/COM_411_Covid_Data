@@ -103,7 +103,38 @@ def menu(variant=0):
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
     # TODO: Your code here
-    pass
+    if variant == 0:
+        print("[1] Process Data\n"
+              "[2] Visualise Data\n"
+              "[3] Export Data\n"
+              "[4] Exit")
+        variant = int(input())
+        if 4 >= variant > 0:
+            return variant
+
+    elif variant == 1:
+        print("[1] Record by Serial Number\n"
+              "[2] Records by Observation Date\n"
+              "[3] Group Records by Country / Region\n"
+              "[4] Summarise Records")
+        variant = int(input())
+        if 4 >= variant > 0:
+            return variant
+
+    elif variant == 2:
+        print("[1] Country/Region Pie Chart\n"
+              "[2] Observations Chart\n"
+              "[3] Animated Summary")
+        variant = int(input())
+        if 3 >= variant > 0:
+            return variant
+
+    elif variant == 3:
+        print("[1] All Data\n"
+              "[2] Data for Specific Country/Region")
+        variant = int(input())
+        if 2 >= variant > 0:
+            return variant
 
 
 def total_records(num_records):
