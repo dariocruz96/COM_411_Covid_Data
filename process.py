@@ -26,3 +26,8 @@ The required functions are as follows:
 """
 
 # TODO: Your code here
+import tui
+
+
+def total_records(covid_records):
+    tui.total_records(covid_records)
