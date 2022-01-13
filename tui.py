@@ -230,7 +230,7 @@ def display_record(record, cols=None):
             display_record(record[i])
 
 
-def display_records():
+def display_records(records, cols=None):
     """
     Task 9: Display each record in the specified list of records.
     Only the data for the specified column indexes will be displayed.
@@ -256,3 +256,8 @@ def display_records():
     :return: Does not return anything
     """
     # TODO: Your code here
+    for i in records:
+        if cols is None:
+            display_record(i)
+        else:
+            display_record(i, cols)
