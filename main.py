@@ -52,7 +52,7 @@ def run():
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
-
+        variant = tui.menu()
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
         # operation has started.
