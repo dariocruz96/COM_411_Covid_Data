@@ -37,3 +37,17 @@ def total_records(covid_records):
 def loaded_record(covid_records):
     record = tui.display_record(covid_records[tui.serial_number() - 1])
     return record
+
+
+def records_by_observation_date(covid_records):
+    observation_dates = tui.observation_dates()
+    for date in observation_dates:
+        count = 0
+        while True:
+            if count >= len(covid_records):
+                break
+            elif date == covid_records[count][1]:
+                print(covid_records[count])
+                count += 1
+            else:
+                count += 1
