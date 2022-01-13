@@ -30,4 +30,10 @@ import tui
 
 
 def total_records(covid_records):
-    tui.total_records(covid_records)
+    total = tui.total_records(covid_records)
+    return total
+
+
+def loaded_record(covid_records):
+    record = tui.display_record(covid_records[tui.serial_number() - 1])
+    return record
