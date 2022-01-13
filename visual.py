@@ -30,3 +30,19 @@ def pie_chart(covid_records):
 
     plt.pie(sizes, labels=labels)
     plt.show()
+
+
+def bar_chart(covid_records):
+    summary = process.summary_of_records(covid_records)
+    summary.sort(key=lambda x: x[1]['Deaths'])
+    x = []
+    y = []
+    for i in range(5):
+        x.append(summary[i - 1][0])
+        y.append(summary[i - 1][1]['Deaths'])
+
+    plt.xlabel("Countries")
+    plt.ylabel("Number of deaths by Covid-19 in January 2020")
+
+    plt.bar(x, y)
+    plt.show()
