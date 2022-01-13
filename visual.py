@@ -14,3 +14,19 @@ Each function should visualise the data using Matplotlib.
 """
 
 # TODO: Your code here
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import process
+
+
+def pie_chart(covid_records):
+    summary = process.summary_of_records(covid_records)
+    labels = []
+    sizes = []
+
+    for item in summary:
+        labels.append(item[0])
+        sizes.append(item[1]['Cases'])
+
+    plt.pie(sizes, labels=labels)
+    plt.show()
