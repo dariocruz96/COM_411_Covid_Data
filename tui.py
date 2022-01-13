@@ -151,7 +151,7 @@ def total_records(num_records):
     :return: Does not return anything
     """
     # TODO: Your code here
-    pass
+    print(f"There are {num_records} records in the data set.")
 
 
 def serial_number():
