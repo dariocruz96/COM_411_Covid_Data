@@ -30,6 +30,7 @@ def group_by_country_region(covid_records):
     group.sort(key=lambda x: x[3])
     return group
 
+
 def summary_of_records(covid_records):
     summary = {}
     summary_list = []
