@@ -26,7 +26,6 @@ def welcome():
     for i in range(len(message)):
         print("-", end="")
     print()
-    return 0
 
 
 def error(msg):
@@ -41,7 +40,7 @@ def error(msg):
     :return: does not return anything
     """
     # TODO: Your code here
-    pass
+    print(f'Error! {msg}')
 
 
 def progress(operation, value):
