@@ -5,8 +5,8 @@ import process
 
 covid_records = []
 
-def run():
 
+def run():
     tui.welcome()
 
     tui.progress("Data loading", 0)
@@ -55,33 +55,26 @@ def run():
                 variant = tui.menu(variant)
                 if variant == 1:
                     visual.pie_chart(covid_records)
-
                 elif variant == 2:
                     visual.bar_chart(covid_records)
                 elif variant == 3:
                     visual.summary_of_records(covid_records)
                     visual.run()
-        # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
-        # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
-        # - Check what option has been selected
-        #
-        # - Use the appropriate function in the module 'tui' to indicate that the export operation has started.
-        # - Export the data (see below)
-        # - Use the appropriate function in the module 'tui' to indicate that the export operation has completed.
-        #
-        # To export the data, you should demonstrate the application of OOP principles including the concepts of
-        # abstraction and inheritance.  You should create suitable classes with appropriate methods.
-        # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
-        # TODO: Your code here
+            # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
+            # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
+            # - Check what option has been selected
+            #
+            # - Use the appropriate function in the module 'tui' to indicate that the export operation has started.
+            # - Export the data (see below)
+            # - Use the appropriate function in the module 'tui' to indicate that the export operation has completed.
+            #
+            # To export the data, you should demonstrate the application of OOP principles including the concepts of
+            # abstraction and inheritance.  You should create suitable classes with appropriate methods.
+            # You should use these to write the records (either all or only those for a specific country/region) to a JSON file.
+            # TODO: Your code here
 
-        # Task 26: Check if the user selected the option for exiting the program.
-        # If so, then break out of the loop
-        # TODO: Your code here
             if variant == 4:
                 break
-        # Task 27: If the user selected an invalid option then use the appropriate function of the
-        # module tui to display an error message
-        # TODO: Your code here
 
         except ValueError:
             tui.error("--Invalid input--!\n")
