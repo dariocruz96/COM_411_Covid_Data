@@ -1,19 +1,3 @@
-"""
-This module is responsible for visualising the data using Matplotlib.
-"""
-
-"""
-Task 22 - 24: Write suitable functions to visualise the data as follows:
-
-- Display the number of confirmed cases per country/region using a pie chart
-- Display the top 5 countries for deaths using a bar chart
-- Display a suitable (animated) visualisation to show how the number of confirmed cases, deaths and recovery change over
-time. This could focus on a specific country or countries.
-
-Each function should visualise the data using Matplotlib.
-"""
-
-# TODO: Your code here
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import process
@@ -45,4 +29,67 @@ def bar_chart(covid_records):
     plt.ylabel("Number of deaths by Covid-19 in January 2020")
 
     plt.bar(x, y)
+    plt.show()
+
+summary_list = []
+
+
+def summary_of_records(covid_records):
+    summary = {}
+    global summary_list
+    for record in covid_records:
+        country_region = covid_records[0][3]
+        date = record[1]
+        cases = record[-3]
+        deaths = record[-2]
+        recoveries = record[-1]
+        if country_region == covid_records[0][3] and date in summary:
+            summary[date]['Cases'] += int(cases)
+            summary[date]['Deaths'] += int(deaths)
+            summary[date]['Recoveries'] += int(recoveries)
+        elif country_region == covid_records[0][3]:
+            summary[date] = {'Cases': 0, 'Deaths': 0, 'Recoveries': 0}
+            summary[date]['Cases'] += int(cases)
+            summary[date]['Deaths'] += int(deaths)
+            summary[date]['Recoveries'] += int(recoveries)
+
+    for key, value in summary.items():
+        summary_list.append((key, value))
+    return summary_list
+
+
+fig, (ax1, ax2, ax3) = plt.subplots(3, 1)
+
+
+def animate(frame):
+    global ax1, ax2, ax3, summary_list
+    plt.suptitle('Mainland China ( January 2020)')
+    ax1.set_xlabel('Days')
+    ax1.set_ylabel('Confirmed Cases')
+    ax2.set_xlabel('Days')
+    ax2.set_ylabel('Deaths')
+    ax3.set_xlabel('Days')
+    ax3.set_ylabel('Recoveries')
+    day = []
+    x = []
+    y = []
+    y2 = []
+    y3 = []
+    for index in range(frame):
+        day.append(summary_list[index][0].split("/"))
+        x.append(day[index][1])
+        y.append(summary_list[index][1]['Cases'])
+        y2.append(summary_list[index][1]['Deaths'])
+        y3.append(summary_list[index][1]['Recoveries'])
+    ax1.plot(x, y)
+    ax2.plot(x, y2)
+    ax3.plot(x, y3)
+
+
+def run():
+    line_animation = animation.FuncAnimation(fig,
+                                             animate,
+                                             frames=11,
+                                             interval=1000)
+
     plt.show()
