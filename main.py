@@ -24,52 +24,43 @@ def run():
     tui.total_records(len(covid_records))
     tui.progress(f'Data loading', 100)
     while True:
+        try:
+            variant = tui.menu()
 
-        variant = tui.menu()
-
-        if variant == 1:
-            tui.progress("Data processing", 0)
-            tui.progress("Data processing", 100)
-            variant = tui.menu(variant)
             if variant == 1:
-                tui.progress("Record retrieval", 0)
-                process.loaded_record(covid_records)
-                tui.progress("Record retrieval", 100)
-            elif variant == 2:
-                tui.progress("Records retrieval", 0)
-                process.records_by_observation_date(covid_records)
-                tui.progress("Records retrieval", 100)
-            elif variant == 3:
-                tui.progress("Grouping process", 0)
-                group_by_country_region = process.group_by_country_region(covid_records)
-                tui.display_records(group_by_country_region)
-                tui.progress("Grouping process", 100)
-            elif variant == 4:
-                tui.progress("Summary process", 0)
-                summary = process.summary_of_records(covid_records)
-                tui.display_records(summary)
-                tui.progress("Summary process", 100)
-        # Task 21: Check if the user selected the option for visualising data.
-        # If so, then do the following:
-        # - Use the appropriate function in the module 'tui' to indicate that the data visualisation operation
-        # has started.
-        # - Visualise the data by doing the following:
-        #   - call the appropriate function in the module 'tui' to determine what visualisation is to be done.
-        #   - call the appropriate function in the module 'visual'
-        # - Use the appropriate function in the module 'tui' to display a message to indicate that the
-        # data visualisation operation has completed.
-        # TODO: Your code here
-        if variant == 2:
-            tui.progress("Data visualisation operation", 0)
-            variant = tui.menu(variant)
-            if variant == 1:
-                visual.pie_chart(covid_records)
+                tui.progress("Data processing", 0)
+                tui.progress("Data processing", 100)
+                variant = tui.menu(variant)
+                if variant == 1:
+                    tui.progress("Record retrieval", 0)
+                    process.loaded_record(covid_records)
+                    tui.progress("Record retrieval", 100)
+                elif variant == 2:
+                    tui.progress("Records retrieval", 0)
+                    process.records_by_observation_date(covid_records)
+                    tui.progress("Records retrieval", 100)
+                elif variant == 3:
+                    tui.progress("Grouping process", 0)
+                    group_by_country_region = process.group_by_country_region(covid_records)
+                    tui.display_records(group_by_country_region)
+                    tui.progress("Grouping process", 100)
+                elif variant == 4:
+                    tui.progress("Summary process", 0)
+                    summary = process.summary_of_records(covid_records)
+                    tui.display_records(summary)
+                    tui.progress("Summary process", 100)
 
-            elif variant == 2:
-                visual.bar_chart(covid_records)
-            elif variant == 3:
-                visual.summary_of_records(covid_records)
-                visual.run()
+            if variant == 2:
+                tui.progress("Data visualisation operation", 0)
+                variant = tui.menu(variant)
+                if variant == 1:
+                    visual.pie_chart(covid_records)
+
+                elif variant == 2:
+                    visual.bar_chart(covid_records)
+                elif variant == 3:
+                    visual.summary_of_records(covid_records)
+                    visual.run()
         # Task 25: Check if the user selected the option for exporting data.  If so, then do the following:
         # - Use the appropriate function in the module 'tui' to retrieve the type of data to be exported.
         # - Check what option has been selected
@@ -91,7 +82,8 @@ def run():
         # module tui to display an error message
         # TODO: Your code here
 
-        pass  # can remove
+        except ValueError:
+            tui.error("--Invalid input--!\n")
 
 
 if __name__ == "__main__":
